@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Year 2025 Greeting Card</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e2a47;
+}
+
+#card {
+  width: 400px;
+  height: 500px;
+  background-color: #ffea00;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 30px;
+}
+
+#confetti {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  background-image: url('confetti.gif');
+  background-size: cover;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#message-box {
+  color: #2e2e2e;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+button {
+  background-color: #00c853;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00b748;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="card">
+    <div id="confetti"></div>
+    <div id="message-box">
+      <h1 id="main-message">Happy New Year 2025!</h1>
+      <button id="change-message">Click for a Surprise</button>
+    </div>
+  </div>
+
+  <script>// JavaScript to create interactivity
+    document.getElementById('change-message').addEventListener('click', function() {
+      // Array of random New Year messages
+      const messages = [
+        'Cheers to new beginnings!',
+        'Wishing you a year filled with happiness!',
+        'May 2025 bring you peace and joy!',
+        'Embrace the new year with open arms!',
+        'Let’s make 2025 the best year yet!'
+      ];
+    
+      // Get a random message
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    
+      // Change the message in the greeting card
+      document.getElementById('main-message').innerText = randomMessage;
+    
+      // Start confetti animation
+      document.getElementById('confetti').style.opacity = 1;
+      
+      // Remove confetti after 5 seconds
+      setTimeout(function() {
+        document.getElementById('confetti').style.opacity = 0;
+      }, 5000);
+    });
+    
+    // Animation for confetti (this is just an example, you can use your own confetti image or animation)
+    document.getElementById('confetti').style.animation = "confetti-fall 1s infinite";
+    
+    </script>
+</body>
+</html>

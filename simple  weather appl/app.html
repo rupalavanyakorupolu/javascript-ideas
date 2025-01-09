@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: whitesmoke;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        align-items:center ;
+        justify-items: center;
+        height: 100vh;
+        margin:0;   
+    }
+    #weather-container{
+        background: aqua;
+        max-width:  400px;
+        padding:  20px;
+        margin-left: 500px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+        backdrop-filter:  blux(10px);
+        border: 1px solid rgba(225, 255, 255, 0.1);
+        text-align: center;
+    }
+    h2, label,p{
+        color: #fff;
+        margin: 8px 0;
+    }
+    input{
+        width: calc(100% -16px);
+        padding:8px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid white;
+        margin-top: 20px;
+    }
+    button{
+        background: #debff4;
+        color: white;
+        padding:10p;
+        border:  none;
+        border-radius:  10px;
+        cursor:pointer;
+        margin-top: 20px;
+        width: 100px;
+        font-size:15px;
+    }
+    button:hover{
+        background:  #8b48d7;
+    }
+    #temp-div p {
+        font-size: 60px;
+        margin-top: -30px;
+    }
+    #weather-icon{
+        width:200px;
+        height:200px;
+        margin:0 auto 10px;
+        margin-bottom:  0;
+        display: none;
+    }
+    #hourly-forest {
+        margin-top:  50px;
+        overflow-x: auto;
+        white-space:  nowrap;
+        display: flex;
+        justify-content: space-between6;
+
+
+
+    }
+    .hourly-item{
+margin-top:  0 0 auto;
+        width: 80px;
+        display: flex;
+        flex-direction:  column;
+        align-items: center;
+        margin-right: 10px;
+        color:white;
+        
+    }
+    .hourly-item  img{
+        width:30px;
+        height: 30px;
+        margin-bottom:  5px;
+    }
+    #hourly-heading{
+        color:#fff;
+        margin-top:10px;
+    }
+</style>
+<body>
+    <div  id="weather-container">
+        <h2> Weather APP</h2>
+        <input  type="text"id="city" placeholder="Enter city">
+        <button onclick="getWeather()">search</button>
+        <img id="weather-icon"alt="Weather  Icon">
+        <div id="temp-div"></div>
+        <div id="weather-info"></div>
+        <div id="hourly-forecast"></div>
+    </div>
+    <script>
+    const url = 'https://api.openweathermap.org/data/2.5/weather';
+const apiKey = 'f00c38e0279b7bc85480c3fe775d518c';
+
+$(document).ready(function () {
+    weatherFn('Pune');
+});
+
+async function weatherFn(cName) {
+    const temp = `${url}?q=${cName}&appid=${apiKey}&units=metric`; // Fixed template literal
+    try {
+        const res = await fetch(temp);
+        const data = await res.json();
+        if (res.ok) {
+            weatherShowFn(data);
+        } else {
+            alert('City not found. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+function weatherShowFn(data) {
+    $('#city-name').text(data.name);
+    $('#date').text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    $('#temperature').html(`${data.main.temp}°C`); // Fixed template literal
+    $('#description').text(data.weather[0].description);
+    $('#wind-speed').html(`Wind Speed: ${data.wind.speed} m/s`); // Fixed template literal
+    
+    // Set weather icon
+    const iconCode = data.weather[0].icon; 
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`; // URL for weather icon
+    $('#weather-icon').attr('src', iconUrl); // Set weather icon source
+    
+    $('#weather-info').fadeIn();
+}
+
+
+    </script>
+
+        
+</body>
+</html>

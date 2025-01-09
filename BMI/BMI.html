@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: #85ff63;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cont{
+        width: 400px;
+        height: 400px;
+        background-color: white;
+        border-radius: 10px;
+        padding: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    input{
+        width: 100%;
+        height: 40px;
+        border: 1px solid;
+        border-radius:  5px 0px 0px 5px;
+        padding: 0px 10px;
+        margin-bottom: 10px;
+    }
+    .cont{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin:  10px  0px;
+    }
+    select{
+        width: 100px;
+        height: 40px;
+        border: 1px solid;
+        border-radius:  0px 5px 5px 0px;
+        background-color: #85ff63;
+        color: aqua;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    input:focus,select:focus{
+        color: blue;
+        font-weight: 600;
+    }
+    .form button{
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+        border: none;
+background-color: #85ff63;
+color: white;
+font-weight: 600;
+font-size: 16px;
+cursor: pointer;
+    }
+</style>
+<body>
+    <div class="cont">
+        <h1> BMI caluculator</h1>
+        <div class="form"></div>
+        <label>weight</label>
+        <div class="contin"></div>
+        <input type="number"id=" weight input kg" placeholder="enter your weight in kg"/>
+        <select>
+            
+            <option value ="kg">kg</option>
+            <option value ="pound">pound</option>
+        </select>
+        
+        <label>Height</label>
+        <div class="contin">
+            <input type="number"id=" height=" input meter placeholder="enter your weight in meter"/>
+            <select>
+            
+                <option value ="meter">meter</option>
+                <option value ="centimeter">centimeter</option>
+            </select>
+        
+    </div>
+    <button>caluculate</button>
+</body>
+</html>

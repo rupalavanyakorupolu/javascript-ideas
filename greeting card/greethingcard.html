@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year 2025 Greeting Card</title>
+<style>
+    /* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.card {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    position: relative;
+}
+
+h1 {
+    color: #f39c12;
+    font-size: 36px;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+}
+
+button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+#fireworks {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.firework {
+    width: 10px;
+    height: 10px;
+    background-color: #f39c12;
+    border-radius: 50%;
+    position: absolute;
+    animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(var(--x), var(--y));
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy New Year <span id="year"></span>!</h1>
+        <p>Wishing you a year full of joy, success, and new adventures!</p>
+        <button onclick="celebrate()">Celebrate New Year</button>
+        <div id="fireworks"></div>
+    </div>
+
+    <script>
+        // script.js
+document.getElementById('year').innerText = 2025;
+
+function celebrate() {
+    const fireworksContainer = document.getElementById('fireworks');
+    fireworksContainer.style.visibility = 'visible';
+    fireworksContainer.innerHTML = ''; // Clear previous fireworks
+
+    // Generate random fireworks
+    for (let i = 0; i < 10; i++) {
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+
+        // Randomly position the fireworks
+        const randomX = (Math.random() - 0.5) * 200; // Random x direction
+        const randomY = (Math.random() - 0.5) * 200; // Random y direction
+
+        firework.style.setProperty('--x', `${randomX}px`);
+        firework.style.setProperty('--y', `${randomY}px`);
+
+        fireworksContainer.appendChild(firework);
+    }
+
+    // Hide fireworks after animation is complete
+    setTimeout(() => {
+        fireworksContainer.style.visibility = 'hidden';
+    }, 3000);
+}
+
+    </script>
+</body>
+</html>

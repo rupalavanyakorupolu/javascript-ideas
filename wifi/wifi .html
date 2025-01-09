@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display:flex;
+        justify-content: center;
+        align-items:  center;
+        height:100vh;
+        background-color:  #000;
+        font-family: Arial,  sans-serif;
+    }
+    .wifi-toggle{
+        position:ralative;
+        width: 120;
+        height:  60px;
+        background: #0ff ;
+        border-radius:  50px;
+        top: 5px;
+        left:5px;
+        transition:  0.45;
+        box-shadow:  0  0 20px  #0ff, 0 0 50px #0ff,0 0 100px #0ff;
+    }
+    .wifi-toggle.active.toggle-btn{
+        left: 65px;
+        background:  #f00;
+        box-shadow:  0 0 20px #f00, 0 0 50px #f00, 0 0 100px  #f00;
+        height: 50px;
+        background:  #0ff;
+        border-radius:  50%;
+        top: 5px;
+        left:5px;
+        transition: 0.45;
+        box-shadow:  0 0  20px #0ff,0 0 50px #0ff,0 0 100 #0ff;
+
+    }
+    .wifi-toggle.wifi-toggle.active.toggle-btn{
+        left:65px;
+        background:  #0ff;
+        font-size:  20px;
+        text-align: center;
+        margin-top:  20px;
+        text-shadow:  0 0 10px #0ff;
+
+    }
+    .wifi-toggle.active.status-text{
+        color: #f00;
+        text-shadow:  0 0 10px #f00;
+    }
+</style>
+<body>
+    <div class="wifi-toggle" onclick="toggleWifi()">
+        <div class="toggle-btn"></div>
+        <div class="status-text">Wifi ON</div>
+    </div>
+    <script>
+        function togglewifi(){
+            const toggle = document.querySelector('.wifi-toggle');
+            const statusText =document.querySelector('status-text');
+            toggle.classList.toggle('active');
+            if(toggle.classList.contains('active')){
+                statusText.textContent = 'WiFi ON'
+            }else{
+                 statusText.textContent = 'WiFi OFF'
+            }
+
+        }
+
+        
+
+        
+    </script>
+    
+</body>
+</html>
